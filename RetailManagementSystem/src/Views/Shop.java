@@ -8,12 +8,12 @@ public class Shop {
     UserModel model=new UserModel();
     UserDAO userdao=new UserDAOImplementation();
     UserController control=new UserController(userdao);
-    private Scanner obj;
+    public Scanner obj;
     public Shop(){
         obj=new Scanner(System.in);
     }
     public void shopPage() throws Exception{
-        System.out.println("\nWELCOME TO ONLINE SHOPPING SYSTEM\n");
+        System.out.println("\nWELCOME TO RETAIL MANAGEMENT SYSTEM\n");
         int ch;
         do
         {
@@ -26,9 +26,9 @@ public class Shop {
             ch=obj.nextInt();
             if(ch==1)
                 register();
-            else if(ch==3)
+            else if(ch==2)
                 loginSystem();
-            else if(ch==4)
+            else if(ch==3)
                 System.out.println("Thank you !! Visit again.");
             else
                 System.out.println("Wrong choice");
@@ -65,8 +65,30 @@ public class Shop {
             System.out.println("Password not Match");
         }
     }
-    public void loginSystem(){
-       
+    public void loginSystem() throws Exception{
+        String email,password;
+        System.out.println("\nWELCOME TO LOGIN PAGE\n");
+        System.out.println("*****************************************************\n");
+        obj.nextLine();
+        System.out.println("Enter your email");
+        email=obj.nextLine();
+        System.out.println("Enter your password");
+        password=obj.nextLine();
+        model.setuserEmail(email);
+        model.setUserPassword(password);
+        int result=control.loginAdmin(model);
+        if(result==1){
+            System.out.println("LOGINED SUCCESSFULLY !\n");
+            Admin admin=new Admin();
+            admin.adminPage();
+        }
+        else if(result==0){
+            System.out.println("PASSWORD NOT MATCHED !\n");
+        }
+        else{
+            System.out.println("INVALID EMAIL !\n");
+        }
+        
     }
     public int getAId() throws Exception{
         int id=control.getAdminId();

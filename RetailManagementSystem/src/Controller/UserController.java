@@ -11,6 +11,10 @@ public class UserController {
         int rs=userdao.addAdmin(user);
         return rs;
     }
+    public int loginAdmin(UserModel user) throws Exception {
+        int rs=userdao.loginAdmin(user);
+        return rs;
+    }
     public int getAdminId() throws Exception{
         int rs1=userdao.getAdminId();
         return rs1;
