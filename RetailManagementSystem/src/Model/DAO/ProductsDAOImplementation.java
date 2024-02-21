@@ -25,11 +25,65 @@ public class ProductsDAOImplementation implements ProductsDAO{
     }
     public int getProductId() throws Exception{
         db.getConnectivity();
-        String query = "SELECT COUNT(*) FROM product__details";
+        String query = "SELECT COUNT(*) FROM product_details";
         PreparedStatement preparedStatement =DBConnectivity.con.prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();
         int rowCount = resultSet.getInt(1);
         return rowCount;
+    }
+    public int removeProducts(ProductsModel pmodel) throws Exception{
+        db.getConnectivity();
+        String query="delete from product_details where product_name=? and category=? and supplier_id=?";
+        PreparedStatement preparedStatement = DBConnectivity.con.prepareStatement(query);
+        preparedStatement.setString(1, pmodel.getProductName());
+        preparedStatement.setString(2, pmodel.getCategory());
+        preparedStatement.setInt(3, pmodel.getSupplierId());
+        int rs = preparedStatement.executeUpdate();
+        return rs;
+    }
+    public int updateProductName(ProductsModel pmodel,String newName) throws Exception{
+        db.getConnectivity();
+        String query="update product_details set product_name=? where product_name=? and category =? and supplier_id=?";
+        PreparedStatement preparedStatement = DBConnectivity.con.prepareStatement(query);
+        preparedStatement.setString(1, newName);
+        preparedStatement.setString(2, pmodel.getProductName());
+        preparedStatement.setString(3, pmodel.getCategory());
+        preparedStatement.setInt(4, pmodel.getSupplierId());
+        int rs = preparedStatement.executeUpdate();
+        return rs;
+    }
+    public int updateProductQuantity(ProductsModel pmodel,int newQuantity) throws Exception{
+        db.getConnectivity();
+        String query="update product_details set quantity=? where product_name=? and category =? and supplier_id=?";
+        PreparedStatement preparedStatement = DBConnectivity.con.prepareStatement(query);
+        preparedStatement.setInt(1, newQuantity);
+        preparedStatement.setString(2, pmodel.getProductName());
+        preparedStatement.setString(3, pmodel.getCategory());
+        preparedStatement.setInt(4, pmodel.getSupplierId());
+        int rs = preparedStatement.executeUpdate();
+        return rs;
+    }
+    public int updateProductPrice(ProductsModel pmodel,int newPrice) throws Exception{
+        db.getConnectivity();
+        String query="update product_details set price=? where product_name=? and category =? and supplier_id=?";
+        PreparedStatement preparedStatement = DBConnectivity.con.prepareStatement(query);
+        preparedStatement.setInt(1, newPrice);
+        preparedStatement.setString(2, pmodel.getProductName());
+        preparedStatement.setString(3, pmodel.getCategory());
+        preparedStatement.setInt(4, pmodel.getSupplierId());
+        int rs = preparedStatement.executeUpdate();
+        return rs;
+    }
+    public int updateProductCredits(ProductsModel pmodel,int newcredits) throws Exception{
+        db.getConnectivity();
+        String query="update product_details set product_credits=? where product_name=? and category =? and supplier_id=?";
+        PreparedStatement preparedStatement = DBConnectivity.con.prepareStatement(query);
+        preparedStatement.setInt(1, newcredits);
+        preparedStatement.setString(2, pmodel.getProductName());
+        preparedStatement.setString(3, pmodel.getCategory());
+        preparedStatement.setInt(4, pmodel.getSupplierId());
+        int rs = preparedStatement.executeUpdate();
+        return rs;
     }
 }
