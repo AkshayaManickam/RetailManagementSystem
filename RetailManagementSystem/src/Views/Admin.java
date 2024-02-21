@@ -1,7 +1,7 @@
 package Views;
 
 public class Admin extends Shop {
-    public void adminPage(){
+    public void adminPage() throws Exception{
         int ch;
         do
 		{

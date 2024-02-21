@@ -1,4 +1,3 @@
-
 import Views.Shop;
 
 public class App {
