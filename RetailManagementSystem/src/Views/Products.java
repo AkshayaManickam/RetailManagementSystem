@@ -36,6 +36,7 @@ public class Products extends Admin{
 			else if(ch==5)
 				searchProducts();
 			else if(ch==6)
+				//write code
 				System.out.println("Thank you");
 			else
 				System.out.println("Wrong choice ");
@@ -173,7 +174,7 @@ public class Products extends Admin{
                 p_name=obj.nextLine();
 				System.out.println("Enter the product Category");
                 category=obj.nextLine(); 
-                System.out.println("Enter the new product quantity");
+                System.out.println("Enter the new product price");
                 newprice=obj.nextInt(); 
                 pmodel.setSupplierId(s_id);
                 pmodel.setProductName(p_name);
@@ -206,8 +207,7 @@ public class Products extends Admin{
 				else{
 					System.out.println("Product not updated");
 				}
-            }
-            
+            }    
         }while(ch=='y' || ch=='Y');
 	}
 	public void viewProducts(){

@@ -33,7 +33,7 @@ public class ProductController {
         return rs1;
     }
     public int updateProductCredits(ProductsModel pmodel,int newcredits) throws Exception{
-        int rs1=pdao.updateProductPrice(pmodel,newcredits);
+        int rs1=pdao.updateProductCredits(pmodel,newcredits);
         return rs1;
     }
 }
