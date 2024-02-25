@@ -1,8 +1,9 @@
-package Model.DAO;
+package model.dao;
 
 import java.sql.ResultSet;
 import java.util.List;
-import Model.DTO.ProductsModel;
+
+import model.dto.ProductsModel;
 
 public interface ProductsDAO {
     int addProduct(ProductsModel pmodel) throws Exception;

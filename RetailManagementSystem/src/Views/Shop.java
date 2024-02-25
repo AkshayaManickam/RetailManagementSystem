@@ -1,10 +1,10 @@
-package Views;
+package views;
 import java.util.*;
 
-import Controller.UserController;
-import Model.DAO.UserDAO;
-import Model.DAO.UserDAOImplementation;
-import Model.DTO.UserModel;
+import controller.UserController;
+import model.dao.UserDAO;
+import model.dao.UserDAOImplementation;
+import model.dto.UserModel;
 public class Shop {
     UserModel model=new UserModel();
     UserDAO userdao=new UserDAOImplementation();

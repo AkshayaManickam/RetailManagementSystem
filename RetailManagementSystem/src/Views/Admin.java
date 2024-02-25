@@ -1,4 +1,4 @@
-package Views;
+package views;
 
 public class Admin extends Shop {
     public void adminPage() throws Exception{

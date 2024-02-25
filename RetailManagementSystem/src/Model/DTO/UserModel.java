@@ -1,4 +1,4 @@
-package Model.DTO;
+package model.dto;
 public class UserModel {
     private int user_id;
     private String user_name;

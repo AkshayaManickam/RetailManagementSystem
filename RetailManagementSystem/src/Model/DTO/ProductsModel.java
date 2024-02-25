@@ -1,4 +1,4 @@
-package Model.DTO;
+package model.dto;
 
 public class ProductsModel {
     private int product_id;

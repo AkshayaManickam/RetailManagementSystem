@@ -1,8 +1,8 @@
-package Model.DAO;
+package model.dao;
 import java.sql.*;
 
-import Model.DBConnectivity;
-import Model.DTO.UserModel;
+import model.DBConnectivity;
+import model.dto.UserModel;
 
 public class UserDAOImplementation implements UserDAO {
     DBConnectivity db=new DBConnectivity();

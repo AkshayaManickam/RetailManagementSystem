@@ -1,9 +1,10 @@
-package Controller;
+package controller;
 
 import java.sql.ResultSet;
 import java.util.List;
-import Model.DAO.ProductsDAO;
-import Model.DTO.ProductsModel;
+
+import model.dao.ProductsDAO;
+import model.dto.ProductsModel;
 
 public class ProductController {
     private ProductsDAO pdao;

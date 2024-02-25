@@ -1,12 +1,13 @@
-package Views;
+package views;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.List;
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
-import Controller.ProductController;
-import Model.DAO.ProductsDAO;
-import Model.DAO.ProductsDAOImplementation;
-import Model.DTO.ProductsModel;
+
+import controller.ProductController;
+import model.dao.ProductsDAO;
+import model.dao.ProductsDAOImplementation;
+import model.dto.ProductsModel;
 
 public class Products extends Admin{
 	ProductsModel pmodel=new ProductsModel();
@@ -76,9 +77,13 @@ public class Products extends Admin{
 			int rs=pcontrol.addProduct(pmodel);
 			if(rs==1){
 				System.out.println("Product added Successfully");
+				System.out.print("Do you want to continue ( Y for yes , N for NO )");
+				ch=obj.next().charAt(0);
 			}
 			else{
 				System.out.println("Product not added");
+				System.out.print("Do you want to continue ( Y for yes , N for NO )");
+				ch=obj.next().charAt(0);
 			}
             
         }while(ch=='y' || ch=='Y');
@@ -103,9 +108,13 @@ public class Products extends Admin{
             int rs=pcontrol.removeProducts(pmodel);
 			if(rs==1){
 				System.out.println("Product deleted Successfully");
+				System.out.print("Do you want to continue ( Y for yes , N for NO )");
+				ch=obj.next().charAt(0);
 			}
 			else{
 				System.out.println("Product not deleted");
+				System.out.print("Do you want to continue ( Y for yes , N for NO )");
+				ch=obj.next().charAt(0);
 			}
         }while(ch=='y' || ch=='Y');
 	}
@@ -141,9 +150,13 @@ public class Products extends Admin{
                 int rs=pcontrol.updateProductName(pmodel,p_newName);
 				if(rs==1){
 					System.out.println("Product name updated Successfully");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
 				else{
 					System.out.println("Product not updated");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
             }
             else if(t==2){
@@ -162,9 +175,13 @@ public class Products extends Admin{
                 int rs=pcontrol.updateProductQuantity(pmodel,newquantity);
 				if(rs==1){
 					System.out.println("Product quantity updated Successfully");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
 				else{
 					System.out.println("Product not updated");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
             }
             else if(t==3){
@@ -183,9 +200,13 @@ public class Products extends Admin{
                 int rs=pcontrol.updateProductPrice(pmodel,newprice);
 				if(rs==1){
 					System.out.println("Product price updated Successfully");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
 				else{
 					System.out.println("Product not updated");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
             }
             else if(t==4){
@@ -204,9 +225,13 @@ public class Products extends Admin{
                 int rs=pcontrol.updateProductCredits(pmodel,newcredits);
 				if(rs==1){
 					System.out.println("Product credits updated Successfully");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
 				else{
 					System.out.println("Product not updated");
+					System.out.print("Do you want to continue ( Y for yes , N for NO )");
+					ch=obj.next().charAt(0);
 				}
             }    
         }while(ch=='y' || ch=='Y');
@@ -247,6 +272,8 @@ public class Products extends Admin{
 					System.out.println(metaData.getColumnName(i) + "\t"+rs.getString(i));
                 }
             }
+			System.out.print("Do you want to continue ( Y for yes , N for NO )");
+			ch=obj.next().charAt(0);
         }while(ch=='y' || ch=='Y');
 	}
 	public int getPId() throws Exception{

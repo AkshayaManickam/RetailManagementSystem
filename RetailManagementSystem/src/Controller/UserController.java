@@ -1,6 +1,6 @@
-package Controller;
-import Model.DAO.UserDAO;
-import Model.DTO.UserModel;
+package controller;
+import model.dao.UserDAO;
+import model.dto.UserModel;
 
 public class UserController {
     private UserDAO userdao;

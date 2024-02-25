@@ -1,4 +1,4 @@
-import Views.Shop;
+import views.Shop;
 
 public class App {
     public static void main(String[] args) throws Exception {

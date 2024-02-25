@@ -1,6 +1,6 @@
-package Model.DAO;
+package model.dao;
 
-import Model.DTO.UserModel;
+import model.dto.UserModel;
 
 public interface UserDAO {
     int addAdmin(UserModel user) throws Exception;

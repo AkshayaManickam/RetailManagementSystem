@@ -1,12 +1,12 @@
-package Model.DAO;
+package model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.DBConnectivity;
-import Model.DTO.ProductsModel;
+import model.DBConnectivity;
+import model.dto.ProductsModel;
 
 public class ProductsDAOImplementation implements ProductsDAO{
     DBConnectivity db=new DBConnectivity();
