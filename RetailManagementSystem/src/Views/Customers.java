@@ -4,7 +4,6 @@ import controller.CustomerController;
 import model.dao.CustomersDAO;
 import model.dao.CustomersDAOImplementation;
 import model.dto.CustomersModel;
-
 import java.util.List;
 
 public class Customers extends Admin {
