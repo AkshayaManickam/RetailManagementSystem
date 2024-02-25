@@ -1,5 +1,7 @@
 package Controller;
 
+import java.sql.ResultSet;
+import java.util.List;
 import Model.DAO.ProductsDAO;
 import Model.DTO.ProductsModel;
 
@@ -35,5 +37,13 @@ public class ProductController {
     public int updateProductCredits(ProductsModel pmodel,int newcredits) throws Exception{
         int rs1=pdao.updateProductCredits(pmodel,newcredits);
         return rs1;
+    }
+    public ResultSet searchProducts(ProductsModel pmodel) throws Exception{
+        ResultSet rs1=pdao.searchProducts(pmodel);
+        return rs1;
+    }
+    public List<ProductsModel> getAllProducts() throws Exception{
+        List<ProductsModel> product=pdao.getAllProducts();
+        return product;
     }
 }

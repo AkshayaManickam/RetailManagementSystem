@@ -2,6 +2,8 @@ package Model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import Model.DBConnectivity;
 import Model.DTO.ProductsModel;
@@ -85,5 +87,32 @@ public class ProductsDAOImplementation implements ProductsDAO{
         preparedStatement.setInt(4, pmodel.getSupplierId());
         int rs = preparedStatement.executeUpdate();
         return rs;
+    }
+    public ResultSet searchProducts(ProductsModel pmodel) throws Exception{
+        db.getConnectivity();
+        String query = "SELECT * FROM product_details WHERE supplier_id=?";
+        PreparedStatement preparedStatement = DBConnectivity.con.prepareStatement(query);
+        preparedStatement.setInt(1, pmodel.getSupplierId());
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
+    public List<ProductsModel> getAllProducts() throws Exception{
+        db.getConnectivity();
+        List<ProductsModel> productList = new ArrayList<>();
+        String query = "SELECT * FROM product_details";
+        PreparedStatement preparedStatement = DBConnectivity.con.prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            ProductsModel product = new ProductsModel();
+            product.setProductId(resultSet.getInt("product_id"));
+            product.setSupplierId(resultSet.getInt("supplier_id"));
+            product.setProductName(resultSet.getString("product_name"));
+            product.setPrice(resultSet.getInt("price"));
+            product.setQuantity(resultSet.getInt("quantity"));
+            product.setCategory(resultSet.getString("category"));
+            product.setProductCredits(resultSet.getInt("product_credits"));
+            productList.add(product);
+        }
+        return productList;
     }
 }

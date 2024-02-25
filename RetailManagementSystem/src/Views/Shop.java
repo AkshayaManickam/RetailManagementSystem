@@ -33,7 +33,7 @@ public class Shop {
                 System.out.println("Thank you !! Visit again.");
             else
                 System.out.println("Wrong choice");
-        }while(ch!=4);
+        }while(ch<3);
     }
     public void register() throws Exception{
         String user_name,email,password,conform_password;

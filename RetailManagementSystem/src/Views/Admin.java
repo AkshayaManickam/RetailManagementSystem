@@ -5,7 +5,7 @@ public class Admin extends Shop {
         int ch;
         do
 		{
-			System.out.println("*****************************************************\n");
+			System.out.println("\n*****************************************************\n");
 			System.out.println("1 - MANAGE PRODUCTS");
 			System.out.println("2 - MANAGE CUSTOMERS");
 			System.out.println("3 - MANAGE SUPLIERS");

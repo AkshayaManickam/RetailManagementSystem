@@ -1,5 +1,7 @@
 package Model.DAO;
 
+import java.sql.ResultSet;
+import java.util.List;
 import Model.DTO.ProductsModel;
 
 public interface ProductsDAO {
@@ -10,4 +12,6 @@ public interface ProductsDAO {
     int updateProductQuantity(ProductsModel pmodel,int newQuantity) throws Exception;
     int updateProductPrice(ProductsModel pmodel,int newPrice) throws Exception;
     int updateProductCredits(ProductsModel pmodel,int newcredits) throws Exception;
+    ResultSet searchProducts(ProductsModel pmodel) throws Exception;
+    public List<ProductsModel> getAllProducts() throws Exception;
 }

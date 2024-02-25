@@ -1,5 +1,8 @@
 package Views;
 
+import java.sql.ResultSet;
+import java.util.List;
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import Controller.ProductController;
 import Model.DAO.ProductsDAO;
 import Model.DAO.ProductsDAOImplementation;
@@ -14,7 +17,7 @@ public class Products extends Admin{
 		int ch;
 		do
 		{
-			System.out.println("*****************************************************\n");
+			System.out.println("\n*****************************************************\n");
 			System.out.println("1 - ADD PRODUCTS");
 			System.out.println("2 - REMOVE PRODUCTS");
 			System.out.println("3 - ALTER PRODUCT INFO");
@@ -36,11 +39,9 @@ public class Products extends Admin{
 			else if(ch==5)
 				searchProducts();
 			else if(ch==6)
+			    searchProducts();
 				//write code
-				System.out.println("Thank you");
-			else
-				System.out.println("Wrong choice ");
-		}while(ch!=6);
+		}while(ch<=6);
     }
 	public void addProducts() throws Exception{
 		char ch=' ';
@@ -210,11 +211,43 @@ public class Products extends Admin{
             }    
         }while(ch=='y' || ch=='Y');
 	}
-	public void viewProducts(){
-
+	public void viewProducts() throws Exception{
+		List<ProductsModel> productList = pcontrol.getAllProducts();
+		for (ProductsModel product : productList) {
+            System.out.println("Product ID: " + product.getProductId());
+			System.out.println("Supplier ID: " + product.getSupplierId());
+            System.out.println("Product Name: " + product.getProductName());
+			System.out.println("Product Price: " + product.getPrice());
+            System.out.println("Product Quantity: " + product.getQuantity());
+			System.out.println("Product Category: " + product.getCategory());
+			System.out.println("Product Credits: " + product.getProductCredits());
+            System.out.println("------------------------");
+        }
 	}
-	public void searchProducts(){
-
+	public void searchProducts() throws Exception{
+		char ch=' ';
+		String category;
+        int s_id;
+        do{
+            System.out.println("Enter the Details to search Product\n");
+            System.out.println("*****************************************************");
+			System.out.println("Enter the Supplier id");
+			s_id=obj.nextInt();
+			obj.nextLine();
+			System.out.println("Enter the product Category");
+			category=obj.nextLine(); 
+			pmodel.setSupplierId(s_id);
+            pmodel.setCategory(category);
+			ResultSet rs=pcontrol.searchProducts(pmodel);
+			ResultSetMetaData metaData = (ResultSetMetaData) rs.getMetaData();
+            int columnsCount = metaData.getColumnCount();
+            while (rs.next()) {
+				System.out.println("------------------------");
+                for (int i = 1; i <= columnsCount; i++) {
+					System.out.println(metaData.getColumnName(i) + "\t"+rs.getString(i));
+                }
+            }
+        }while(ch=='y' || ch=='Y');
 	}
 	public int getPId() throws Exception{
         int id=pcontrol.getProductId();
